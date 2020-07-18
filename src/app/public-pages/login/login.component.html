@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="login-content">
+    <mat-toolbar class="login-toolbar" color="primary">LOGIN FORM</mat-toolbar>
+    <mat-card>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-icon matPrefix>person_outline</mat-icon>
+          <input
+            autofocus
+            type="email"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          <input
+            type="password"
+            autocomplete="false"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+
+        <div *ngIf="loading" class="mb-1">
+          <mat-progress-bar
+            mode="indeterminate"
+            color="warn"
+          ></mat-progress-bar>
+        </div>
+
+        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="login()"
+            [disabled]="form.invalid || loading"
+            title="Click here to login"
+          >
+            Login
+          </button>
+          <button
+            mat-stroked-button
+            class="ml-2"
+            color="warn"
+            routerLink="/public/register"
+            title="Click here to register"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

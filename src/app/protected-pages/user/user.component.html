@@ -1,0 +1,47 @@
+<div class="login-container">
+  <div class="login-content">
+    <mat-toolbar class="login-toolbar" color="primary">USER DETAIL</mat-toolbar>
+    <mat-card>
+      <mat-list role="list">
+        <mat-list-item role="listitem"
+          >First Name : {{ userDetail.firstName }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >Last Name : {{ userDetail.lastName }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >Email : {{ userDetail.email }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >Phone Number : {{ userDetail.phoneNumber }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >Gender : {{ userDetail.gender }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >Address : {{ userDetail.address }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem"
+          >password : {{ userDetail.password }}</mat-list-item
+        >
+      </mat-list>
+
+      <div mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="logout()"
+          title="Click here to logout"
+        >
+          Logout
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

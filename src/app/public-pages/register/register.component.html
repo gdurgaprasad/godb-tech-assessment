@@ -1,0 +1,125 @@
+<div class="login-container">
+  <div class="login-content">
+    <mat-toolbar class="login-toolbar" color="primary"
+      >REGISTER FORM</mat-toolbar
+    >
+    <mat-card>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <input
+            autofocus
+            type="text"
+            matInput
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            maxlength="50"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="form.controls.email.hasError('invalidEmail')"
+            >Invalid email</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Phone Number"
+            formControlName="phoneNumber"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="form.controls.phoneNumber.hasError('required')"
+            >Phone number is required</mat-error
+          >
+          <mat-error *ngIf="form.controls.phoneNumber.hasError('pattern')"
+            >Phone number must be 10 digits</mat-error
+          >
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Select Gender" formControlName="gender">
+          <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{
+            gender
+          }}</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Address</mat-label>
+          <textarea
+            formControlName="address"
+            matInput
+            placeholder="Ex. 32,street1,Boston..."
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            type="password"
+            autocomplete="false"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="form.controls.password.hasError('minlength')"
+            >Password isn't long enough, minimum of 8 characters</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            type="password"
+            autocomplete="false"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+          <mat-error
+            *ngIf="
+              form.controls.confirmPassword.hasError('mismatchedPasswords')
+            "
+            >passwords didn't match</mat-error
+          >
+        </mat-form-field>
+        <div *ngIf="loading" class="mb-1">
+          <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+        </div>
+
+        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="center center">
+          <button
+            mat-raised-button
+            color="accent"
+            (click)="register()"
+            [disabled]="form.invalid || loading"
+            title="Click here to register"
+          >
+            Register
+          </button>
+          <button
+            mat-stroked-button
+            class="ml-2"
+            color="warn"
+            routerLink="/public/login"
+            title="Click here to login"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
